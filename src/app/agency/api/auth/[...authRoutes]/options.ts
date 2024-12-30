@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcryptjs from 'bcryptjs'
 
 
-export const NEXT_AUTH = {
+export const NEXT_AUTH2 = {
 
     providers: [
         CredentialsProvider({

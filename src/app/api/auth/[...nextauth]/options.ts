@@ -4,7 +4,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcryptjs from 'bcryptjs'
 
 
-export const NEXT_AUTH2 = {
+
+export const NEXT_AUTH = {
 
     providers: [
         CredentialsProvider({
@@ -38,15 +39,16 @@ export const NEXT_AUTH2 = {
             const passwordValidate = await bcryptjs.compare(credentials?.password || "", existingUser.password)
     
             if(passwordValidate){
-                // return {
-                //     id: existingUser.id,
-                //     name: existingUser.name,
-                //     username: existingUser.username
-                // }
+                return {
+                    id: existingUser.id,
+                    name: existingUser.name,
+                    email: existingUser.username
+                    
+                }
                 // console.log(existingUser);
-                console.log("after hi there")
+                // console.log("after hi there")
                 
-                return existingUser
+                // return existingUser
             }
             else {
                 throw new Error("Incorrect password!");
@@ -54,8 +56,77 @@ export const NEXT_AUTH2 = {
             }
         }
     }),
-    ],
+],
 
-    secret: process.env.NEXTAUTH_SECRET,
-      
+secret: process.env.NEXTAUTH_SECRET,
+callbacks: {
+        async jwt({token, user }: {token: any, user: any }){
+            // console.log("token is: ")
+            // console.log(token);
+            // console.log("user is: ")
+            // console.log(user);
+            // console.log("________")
+            token.id = token.sub;
+
+            const info = await client.admin.findFirst({
+                where: {
+                    id: parseInt(token.sub)
+                }
+            })
+
+            // console.log("info is: ");
+            // console.log(info);
+
+
+            token.role = info?.role
+
+            
+            // console.log("updated token is: ")
+            // console.log(token);
+
+
+
+        
+            return token
+        },
+
+        // async session({ session, user, token}: {session: any, user: any, token: any}){
+        async session({ session, token}: {session: any, token: any}){
+
+            // console.log("session is: ")
+            // console.log(session);
+
+            // console.log("user is: ")
+            // console.log(user);
+
+            // console.log("token is: ")
+            // console.log(token);
+
+            // console.log("_________")
+
+            session.user.role = token.role;
+
+            // console.log("updated session is: ")
+            // console.log(session);
+
+
+            // session.user.adminId = client.admin.findFirst(
+            //     {
+            //         where: {
+            //             id: token.sub
+            //         }
+            //     }
+            // ).
+
+
+
+            // session.user.email = user
+
+            console.log("session getting called")
+
+            return session
+        },
+
+    }
+    
 }
