@@ -26,9 +26,23 @@ model Admin {
   password String
   name String?
   role Role @default(USER)
+  PdfDocuments PdfDocument[]
 }
 
 enum Role {
   ADMIN
   USER
+  GUEST
+}
+
+model PdfDocument {
+  id Int @id @default(autoincrement())
+  title String
+  content String?
+  pdfUrl String
+  pdfKey String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId Int?
+  author Admin? @relation(fields: [authorId], references: [id])
 }

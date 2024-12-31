@@ -1,4 +1,5 @@
-"use client"
+// "use client"
+import ServerComp from "../../../components/agency/ServerComp";
 // import { getServerSession } from "next-auth"
 // import { useSession } from "next-auth/react"
 import { Appbar } from "../../../components/Appbar";
@@ -13,7 +14,8 @@ export default function Agency(){
 
     return (
         <>
-        <Appbar />
+        {/* <Appbar /> */}
+        <ServerComp/>
         <h1>Agency Page</h1>
         </>
     )
