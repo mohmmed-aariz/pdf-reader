@@ -127,6 +127,9 @@ callbacks: {
             return session
         },
 
-    }
+    },
+pages: {
+    signIn: '/signin'
+}
     
 }

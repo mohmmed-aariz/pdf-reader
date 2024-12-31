@@ -2,7 +2,7 @@
 import { useState } from "react"
 // import signup from "../actions/signup";
 import { useRouter } from "next/navigation";
-import signup from "../actions/signup";
+import signup from "../agency/actions/signup";
 
 export default function Signup() {
     const [username, setUsername] = useState("");
