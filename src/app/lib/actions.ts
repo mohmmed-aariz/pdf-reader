@@ -37,3 +37,32 @@ export async function  signup(name: string, username: string, passowrd: string){
 
     return null
 }
+
+
+export const addPdfToDb = async (title: string, pdfKey:string, pdfUrl:string, pdfAppUrl:string, authorId:number, pdfSize: number) => {
+    const newFile = await client.pdfDocument.create({
+        data:{
+        title: title,
+        pdfUrl: pdfUrl,
+        pdfAppUrl: pdfAppUrl,
+        pdfKey: pdfKey,
+        authorId: authorId,
+        size: pdfSize
+        }
+        
+    })
+
+    // console.log("title: ", title);
+    // console.log("pdfKey: ", pdfKey);
+    // console.log("pdf url: ", pdfUrl);
+    // console.log("pdfAppUrl: ", pdfAppUrl);
+    // console.log("authorid: ", typeof(authorId));
+    // console.log("pdfSize: ", typeof(pdfSize))
+
+    // console.log(parseInt(authorId));
+
+
+    console.log("added new file to db: " , newFile);
+
+    return newFile;
+}

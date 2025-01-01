@@ -6,7 +6,9 @@ const ServerComp = async () => {
     const session = await getServerSession(NEXT_AUTH);
     console.log(session);
   return (
-    <div>ServerComp</div>
+    <div>ServerComp
+        <div>{session}</div>
+    </div>
   )
 }
 

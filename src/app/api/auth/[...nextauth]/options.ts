@@ -105,6 +105,7 @@ callbacks: {
             // console.log("_________")
 
             session.user.role = token.role;
+            session.user.id = token.sub;
 
             // console.log("updated session is: ")
             // console.log(session);
