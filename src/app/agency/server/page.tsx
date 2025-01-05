@@ -1,7 +1,7 @@
 
 
 import { NEXT_AUTH } from "@/app/api/auth/[...nextauth]/options";
-import { addPdfToDb, uploadFiles, uploadFirstFilePages } from "@/app/lib/actions";
+import { addPdfToDb, uploadFileAndPages } from "@/app/lib/actions";
 // import { addPdfToDb } from "@/app/lib/actions";
 
 // import { addPdfToDb } from "@/app/lib/actions";
@@ -75,7 +75,8 @@ export default async function Server(){
         <br></br>
 
         {/* <form action={uploadFiles}> */}
-        <form action={uploadFirstFilePages}>
+        {/* <form action={uploadFirstFilePages}> */}
+        <form action={uploadFileAndPages}>
             <input name="files" type="file" multiple />
             <button type="submit">Upload</button>
         </form>
@@ -83,3 +84,6 @@ export default async function Server(){
     )
 }
 
+
+
+// add status online / offline flag in db
