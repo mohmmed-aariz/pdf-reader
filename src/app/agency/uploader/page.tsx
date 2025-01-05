@@ -68,8 +68,9 @@ export default function Home() {
         // console.log("pdf url: ", pdfUrl);
         // console.log("pdfAppUrl: ", pdfAppUrl);
         // console.log("authorid: ", authorId);
+        const totalPages = 0;
 
-        const dbRes = await addPdfToDb(title, pdfKey, pdfUrl, pdfAppUrl, authorId, pdfSize );
+        const dbRes = await addPdfToDb(title, pdfKey, pdfUrl, pdfAppUrl, authorId, pdfSize, totalPages );
       }}>Show details & add file</button>
     </main>
   );

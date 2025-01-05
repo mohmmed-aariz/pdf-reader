@@ -19,6 +19,7 @@
     "pdf-lib": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-pdf": "^9.2.1",
     "uploadthing": "^7.4.4"
   },
   "devDependencies": {
